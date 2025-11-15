@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Confirmation — {{ booking.hotel.name }}</title>
+    <link rel="stylesheet" href="{% static 'booking/checkout.css' %}">
+    <style>
+        /* Container split */
+        .confirmation-container {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Left: hotel image */
+        .left-side {
+            flex: 1;
+            background: url('{{ booking.hotel.image.url }}') no-repeat center center;
+            background-size: cover;
+        }
+
+        /* Right: confirmation details */
+        .right-side {
+            flex: 1;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+        }
+
+        .confirmation-box {
+            background: rgba(255,255,255,0.95);
+            color: #333;
+            padding: 2.5rem 3rem;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 700px;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #1a2a47;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .detail-row span.label {
+            font-weight: 600;
+        }
+
+        .status {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #27ae60; /* green for success */
+        }
+
+        @media (max-width: 900px) {
+            .confirmation-container {
+                flex-direction: column;
+            }
+            .left-side { height: 200px; }
+            .right-side { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="confirmation-container">
+    <div class="left-side"></div>
+    <div class="right-side">
+        <div class="confirmation-box">
+            <h2>Booking Confirmation</h2>
+
+            <div class="detail-row">
+                <span class="label">Transaction:</span>
+                <span>{{ booking.transaction_ref }}</span>
+            </div>
+
+            <div class="detail-row">
+                <span class="label">Hotel:</span>
+                <span>{{ booking.hotel.name }}</span>
+            </div>
+
+            <div class="detail-row">
+                <span class="label">Check-in:</span>
+                <span>{{ booking.check_in|date:"M. d, Y" }}</span>
+            </div>
+
+            <div class="detail-row">
+                <span class="label">Check-out:</span>
+                <span>{{ booking.check_out|date:"M. d, Y" }}</span>
+            </div>
+
+            <div class="detail-row">
+                <span class="label">Total Paid:</span>
+                <span>₱{{ booking.total }}</span>
+            </div>
+
+            <div class="status">
+                Status: {{ booking.status|capfirst }} ✅
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+/* Reset */
+body, h1, p, a {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body styling */
+body {
+    background-image: url("../images/hotel.jpg");
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    overflow-y: auto; /* allow vertical scrolling */
+}
+
+/* Container */
+.hotel-container {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Title */
+.hotel-container h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+/* Location and price */
+.hotel-location,
+.hotel-price {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+/* Image styling */
+.hotel-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+/* Checkout button */
+.checkout-btn {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background-color: #2980b9;
+}

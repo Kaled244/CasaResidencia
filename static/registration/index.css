@@ -1,0 +1,111 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;               /* full viewport height */
+    overflow: hidden;           /* prevents scrolling */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("../images/hotel.jpg");
+    background-size: cover;     /* fills the viewport */
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+
+/* Navbar styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.884);
+    padding: 0.5rem 7rem;
+    height: 60px;
+}
+
+/* Logo styling */
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.logo .casa {
+    color: white;
+}
+
+.logo .residencia {
+    color: yellow;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: white;          
+    text-decoration: none; 
+    font-weight: 300;     
+    transition: color 0.2s;
+    
+}
+
+.nav-links a:hover {
+    color: yellow;
+}
+
+/* Page container for vertical line and main content */
+.page-container {
+    display: flex;
+    align-items: center;       
+    height: calc(100vh - 60px); 
+    padding-left: 5%;         
+    gap: 2rem;                 
+}
+
+/* Vertical line on left */
+/* .vertical-line {
+    width: 2px;                
+    height: 50%;              
+    background-color: black;  
+} */
+
+/* Main content */
+.main-content {
+    margin-top: 350px;
+    text-align: left;          
+}
+
+/* Heading */
+.main-content h1 {
+    font-size: 3rem;  
+    margin-bottom: 1rem;
+}
+
+/* Paragraph */
+.main-content p {
+    font-size: 1.2rem;
+    margin-bottom: -1rem;
+}
+
+/* Book Now button */
+.book-now-btn {
+    display: inline-block;
+    margin-top: 3rem;
+    padding: 0.7rem 1.3rem;      
+    background-color: yellow;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;          
+    border-radius: 15px;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.book-now-btn:hover {
+    background-color: #ffd700;
+    transform: scale(1.05);  
+}

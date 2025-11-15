@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Casa Residencia</title>
+    <link rel="stylesheet" href="{% static 'registration/home.css' %}" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">
+        <span style="color: white">Casa</span
+        ><span style="color: yellow"> Residencia</span>
+      </div>
+      <div class="nav-links">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a>|</a>
+        <a href="{% url 'index' %}">Logout</a>
+      </div>
+    </nav>
+
+    <div class="search-box">
+      <form method="GET">
+        <label class="search-label">Location</label>
+        <input
+          type="text"
+          name="q"
+          placeholder="Where do you plan to stay?"
+          value="{{ request.GET.q }}"
+          class="search-input"
+        />
+        <button type="submit" class="search-btn">Search</button>
+      </form>
+    </div>
+
+    <!-- Hotels Listing -->
+    <section class="hotels-section">
+      <h2 style="margin-left: 3rem">AVAILABLE HOTELS</h2>
+      <div class="hotels-container">
+        {% for hotel in hotels %}
+        <div class="hotel-card">
+          {% if hotel.image %}
+          <img src="{{ hotel.image.url }}" alt="{{ hotel.name }}" />
+          {% else %}
+          <img
+            src="{% static 'images/default-hotel.jpg' %}"
+            alt="Default Hotel"
+          />
+          {% endif %}
+          <h2>{{ hotel.name }}</h2>
+          <p>{{ hotel.location }}</p>
+          <p>₱{{ hotel.price_per_night }} per night</p>
+          <a href="{% url 'hotel_detail' hotel.id %}" class="book-now-btn"
+            >View Details / Book Now</a
+          >
+        </div>
+        {% empty %}
+        <p style="color: white; margin-left: 3rem">
+          No hotels available at the moment.
+        </p>
+        {% endfor %}
+      </div>
+    </section>
+  </body>
+</html>

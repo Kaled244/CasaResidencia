@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout — {{ hotel.name }}</title>
+    <link rel="stylesheet" href="{% static 'booking/checkout.css' %}">
+    <style>
+        /* Dynamic hotel image */
+        .left-side {
+            background: url('{{ hotel.image.url }}') no-repeat center center;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    
+{% if messages %}
+  <div id="popup-message">
+    {% for message in messages %}
+      <div class="popup {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+
+<div class="checkout-container">
+    <div class="left-side"></div>
+    <div class="right-side">
+        <form method="post">
+            {% csrf_token %}
+            <h2>Checkout — {{ hotel.name }}</h2>
+
+            <div class="form-row">
+                <div>
+                    <label>Check-in</label>
+                    {{ form.check_in }}
+                </div>
+                <div>
+                    <label>Check-out</label>
+                    {{ form.check_out }}
+                </div>
+                <div>
+                    <label>Guests</label>
+                    {{ form.guests }}
+                </div>
+            </div>
+
+            <h3>Payment</h3>
+            {{ form.payment_method }}
+
+            <div id="card-fields" class="form-row">
+                <div>
+                    <label>Card Number</label>{{ form.card_number }}
+                </div>
+                <div>
+                    <label>Expiry (MM/YY)</label>{{ form.card_expiry }}
+                </div>
+                <div>
+                    <label>CVV</label>{{ form.card_cvv }}
+                </div>
+            </div>
+
+            <div class="inline-field">
+            <label>GCash Number</label>
+            {{ form.gcash_number }}
+            </div>
+
+            <h3>Promo</h3>
+            <div class="inline-field">
+            <label>Promo Code</label>{{ form.promo_code }}
+            </div>
+            <button type="submit">Pay ₱{{ subtotal }}</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

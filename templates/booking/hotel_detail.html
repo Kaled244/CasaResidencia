@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ hotel.name }} Details</title>
+    <link rel="stylesheet" href="{% static 'booking/hotel_detail.css' %}">
+</head>
+<body>
+    <div class="hotel-container">
+        <h1>{{ hotel.name }}</h1>
+        <p class="hotel-location">Location: {{ hotel.location }}</p>
+        <p class="hotel-price">Price per night: ₱{{ hotel.price_per_night }}</p>
+
+        {% if hotel.image %}
+            <img src="{{ hotel.image.url }}" alt="{{ hotel.name }}" class="hotel-image">
+        {% else %}
+            <img src="{% static 'images/default-hotel.jpg' %}" alt="Default Hotel" class="hotel-image">
+        {% endif %}
+
+        <a href="{% url 'checkout' hotel.id %}" class="checkout-btn">Proceed to Checkout</a>
+    </div>
+</body>
+</html>
+
