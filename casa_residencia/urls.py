@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 from booking.views import home, booking_form
 from booking import views
+from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -27,5 +28,8 @@ urlpatterns = [
     path('', views.index, name='index'),  # 👈 your landing page
     path('home/', views.home, name='home'),  # 👈 hotel listings page
     path('hotel/<int:hotel_id>/', views.hotel_detail, name='hotel_detail'),
+    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('logout/', views.logout_view, name='logout'),
+    path('signup/', views.signup, name='signup'),
     path('', include('booking.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

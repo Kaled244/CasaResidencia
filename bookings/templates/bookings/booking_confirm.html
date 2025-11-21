@@ -1,0 +1,13 @@
+{% extends 'bookings/base.html' %}
+{% block content %}
+  <h2>Booking Confirmed</h2>
+  <p>Your booking has been confirmed. Reference No: <strong>{{ booking.reference }}</strong></p>
+  <ul>
+    <li>Room: {{ booking.room.name }}</li>
+    <li>Location: {{ booking.room.location }}</li>
+    <li>Check-in: {{ booking.check_in }}</li>
+    <li>Check-out: {{ booking.check_out }}</li>
+    <li>Guests: {{ booking.guests }}</li>
+    <li>Total: ₱{{ booking.total_price }}</li>
+  </ul>
+{% endblock %}

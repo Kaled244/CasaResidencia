@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-j$**ws&r4vh(=$1o7!_$v@^0pm&6=3x@qg^j&=4!vx5o3u)h=u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'testserver']
 
 
 # Application definition
@@ -128,3 +128,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Redirect after login
+LOGIN_REDIRECT_URL = 'home'
+# Optional: where to go after logout when LogoutView doesn't specify next_page
+LOGOUT_REDIRECT_URL = 'index'

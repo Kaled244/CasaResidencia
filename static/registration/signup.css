@@ -1,0 +1,19 @@
+body { 
+	font-family: Arial, sans-serif;
+	background: #f2f6f9;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	margin: 0;
+}
+.signup-container {
+	background: white;
+	padding: 2rem;
+	border-radius: 8px;
+	box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+	width: 420px;
+}
+.signup-container h1 { margin-top: 0; font-size: 1.3rem; }
+.signup-container .messages { color: #b00020; }
+.signup-container button { background:#2b6cb0; color:#fff; border:none; padding:0.6rem 1rem; border-radius:4px; cursor:pointer }

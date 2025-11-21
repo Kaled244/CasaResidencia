@@ -1,0 +1,12 @@
+{% extends 'bookings/base.html' %}
+{% block content %}
+  <h2>Book: {{ room.name }}</h2>
+  <p>{{ room.category }} — {{ room.location }}</p>
+  <p>₱{{ room.price_per_night }} / night</p>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Confirm Booking</button>
+  </form>
+{% endblock %}

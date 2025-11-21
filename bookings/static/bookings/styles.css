@@ -1,0 +1,17 @@
+:root{--accent:#2b6cb0;--muted:#666}
+body{font-family:Segoe UI,Roboto,Arial,sans-serif;margin:0;color:#222}
+.container{max-width:980px;margin:0 auto;padding:1rem}
+.site-header{background:var(--accent);color:#fff;padding:1rem 0}
+.site-header a{color:#fff;text-decoration:none}
+.site-footer{background:#f3f3f3;padding:0.5rem 0;margin-top:2rem}
+.search-form input, .search-form select, .search-form button{margin:0.5rem 0;padding:0.4rem}
+.filters{background:#fafafa;padding:0.6rem;border:1px solid #eee;margin-bottom:1rem}
+.rooms{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.room{border:1px solid #eee;padding:0.8rem;border-radius:6px;background:#fff}
+.btn{background:var(--accent);color:#fff;padding:0.5rem 0.8rem;text-decoration:none;border-radius:4px}
+.messages{list-style:none;padding:0}
+.message{padding:0.5rem;border-radius:4px;margin-bottom:0.5rem}
+.message.error{background:#ffe6e6;color:#900}
+.message.success{background:#e6ffed;color:#060}
+.message.info{background:#e6f0ff;color:#034}
+@media (max-width:600px){.container{padding:.6rem}}

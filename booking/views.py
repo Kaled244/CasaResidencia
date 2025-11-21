@@ -13,6 +13,34 @@ from .utils import generate_transaction_ref
 from decimal import Decimal
 import random
 from django.urls import reverse
+from django.contrib.auth import login
+from django.contrib.auth import logout as auth_logout
+from .forms import SignupForm
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            # ensure email saved
+            user.email = form.cleaned_data.get('email')
+            user.save()
+            login(request, user)
+            messages.success(request, 'Signup successful. You are now logged in.')
+            return redirect('home')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = SignupForm()
+
+    return render(request, 'registration/signup.html', {'form': form})
+
+
+def logout_view(request):
+    """Log out user and redirect to landing page."""
+    auth_logout(request)
+    return redirect('index')
 
 def booking_form(request):
     return render(request, 'booking/booking_form.html')

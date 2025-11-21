@@ -1,0 +1,11 @@
+{% extends 'bookings/base.html' %}
+{% block content %}
+  <h2>Search rooms</h2>
+  <form action="{% url 'bookings:room_list' %}" method="get" class="search-form">
+    {{ form.location.label_tag }} {{ form.location }}
+    {{ form.check_in.label_tag }} {{ form.check_in }}
+    {{ form.check_out.label_tag }} {{ form.check_out }}
+    {{ form.guests.label_tag }} {{ form.guests }}
+    <button type="submit">Search</button>
+  </form>
+{% endblock %}

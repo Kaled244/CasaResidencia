@@ -17,9 +17,15 @@
         /* Left: hotel image */
         .left-side {
             flex: 1;
-            background: url('{{ booking.hotel.image.url }}') no-repeat center center;
             background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
         }
+        {% if booking.hotel.image %}
+        .left-side { background-image: url('{{ booking.hotel.image.url }}'); }
+        {% else %}
+        .left-side { background-image: url("{% static 'images/hotel.jpg' %}"); }
+        {% endif %}
 
         /* Right: confirmation details */
         .right-side {

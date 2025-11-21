@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sign up - Casa Residencia</title>
+		<link rel="stylesheet" href="{% static 'registration/signup.css' %}" />
+	</head>
+	<body>
+		<div class="signup-container">
+			<h1>Create account</h1>
+			{% if messages %}
+			<ul class="messages">
+				{% for message in messages %}
+				<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+
+			<form method="post" action="{% url 'signup' %}">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<button type="submit">Sign up</button>
+			</form>
+
+			<p>Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+		</div>
+	</body>
+</html>

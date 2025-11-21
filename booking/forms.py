@@ -2,6 +2,24 @@ from django import forms
 from django.core.exceptions import ValidationError
 import re
 from .models import PromoCode
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+
+class SignupForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = ('username', 'email')
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email__iexact=email).exists():
+            raise ValidationError('A user with that email already exists.')
+        return email
 
 ALNUM_UPPER_RE = re.compile(r'^[A-Z0-9]{6,12}$')
 

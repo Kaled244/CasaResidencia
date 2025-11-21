@@ -1,0 +1,52 @@
+{% extends 'bookings/base.html' %}
+{% block content %}
+  <h2>Available rooms in {{ location }}</h2>
+  <section class="filters">
+    <form id="filters-form" method="get" action="">
+      <input type="hidden" name="location" value="{{ location }}">
+      <input type="hidden" name="check_in" value="{{ check_in }}">
+      <input type="hidden" name="check_out" value="{{ check_out }}">
+      <input type="hidden" name="guests" value="{{ guests }}">
+
+      <label>Category:
+        <select name="category">
+          <option value="">All</option>
+          {% for c in categories %}
+            <option value="{{ c.id }}">{{ c.name }}</option>
+          {% endfor %}
+        </select>
+      </label>
+
+      <label>Min price:
+        <input type="number" step="0.01" name="min_price">
+      </label>
+      <label>Max price:
+        <input type="number" step="0.01" name="max_price">
+      </label>
+      <label>Min rating:
+        <select name="min_rating">
+          <option value="">Any</option>
+          <option value="4">4+</option>
+          <option value="3">3+</option>
+          <option value="2">2+</option>
+        </select>
+      </label>
+      <button type="submit">Apply</button>
+      <button type="button" id="reset-filters">Reset Filters</button>
+    </form>
+  </section>
+
+  <section class="rooms">
+    {% for room in rooms %}
+      <article class="room">
+        <h3>{{ room.name }}</h3>
+        <p>{{ room.category }} — {{ room.location }}</p>
+        <p>₱{{ room.price_per_night }} / night — Rating: {{ room.rating }}</p>
+        <p>{{ room.description|truncatechars:160 }}</p>
+        <a class="btn" href="{% url 'bookings:book_room' room.id %}?check_in={{ check_in }}&check_out={{ check_out }}&guests={{ guests }}">Book</a>
+      </article>
+    {% empty %}
+      <p>No rooms found.</p>
+    {% endfor %}
+  </section>
+{% endblock %}

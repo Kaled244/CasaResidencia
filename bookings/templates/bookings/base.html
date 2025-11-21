@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Casa Residencia</title>
+  <link rel="stylesheet" href="{% static 'bookings/styles.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1><a href="/">Casa Residencia</a></h1>
+    </div>
+  </header>
+  <main class="container">
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li class="message {{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    <div class="container">&copy; Casa Residencia</div>
+  </footer>
+  <script src="{% static 'bookings/filters.js' %}"></script>
+</body>
+</html>

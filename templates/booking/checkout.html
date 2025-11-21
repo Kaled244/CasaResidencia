@@ -8,9 +8,15 @@
     <style>
         /* Dynamic hotel image */
         .left-side {
-            background: url('{{ hotel.image.url }}') no-repeat center center;
             background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
         }
+        {% if hotel.image %}
+        .left-side { background-image: url('{{ hotel.image.url }}'); }
+        {% else %}
+        .left-side { background-image: url("{% static 'images/hotel.jpg' %}"); }
+        {% endif %}
     </style>
 </head>
 <body>
